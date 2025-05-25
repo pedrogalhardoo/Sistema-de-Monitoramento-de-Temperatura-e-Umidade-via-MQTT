@@ -36,4 +36,37 @@ Este projeto implementa um sistema de monitoramento **em tempo real** de tempera
 ---
 
 ## 🧩 Arquitetura
+[Dispositivos IoT] ⇄ [Mosquitto Broker] ⇄ [Servidor Python] ⇄ [Dashboard Web]
+
+---
+
+## 🚧 Desafios enfrentados
+
+- **Problema:** Dispositivos desconectados continuavam aparecendo no dashboard  
+- **Solução:** Implementação do recurso LWT + botão de exclusão manual
+
+---
+
+## 📌 Status
+
+✅ Funcional  
+🛠️ Projetado para rodar em ambiente local, mas facilmente adaptável para produção com autenticação e persistência de dados
+
+---
+
+## 📈 Possibilidades de Expansão
+
+- Integração com banco de dados para histórico
+- Gráficos de variação de temperatura/umidade
+- Autenticação e dashboards multiusuário
+- Integração com plataformas como AWS IoT ou Firebase
+
+---
+
+> “Tecnologia de verdade é aquela que melhora a vida das pessoas.”  
+> — Esse projeto representa meu compromisso com soluções acessíveis, úteis e escaláveis dentro do universo IoT e IHC.
+
+---
+
+👨‍💻 Desenvolvido por [Pedro Galhardo Germiniani](https://www.linkedin.com/in/pedro-galhardo-20789027b)
 
