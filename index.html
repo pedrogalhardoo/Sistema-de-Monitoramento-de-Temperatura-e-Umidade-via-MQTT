@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monitoramento IoT - Cliente</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    .card-value {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .alerta {
+      font-size: 1rem;
+      margin-top: -8px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="container py-4">
+    <h2 class="text-center mb-3">🌡️ Monitoramento de Temperatura e Umidade</h2>
+
+    <div class="row mb-4">
+      <div class="col text-start">
+        <span class="badge bg-secondary">🆔 Cliente: <span id="id-cliente">...</span></span>
+      </div>
+      <div class="col text-center">
+        <span class="badge bg-info text-dark">Estação: <span id="estacao">...</span></span>
+      </div>
+      <div class="col text-end">
+        <span class="badge bg-success" id="status-broker">🟢 Conectado</span>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-6">
+        <div class="card text-center border-primary">
+          <div class="card-body">
+            <h5 class="card-title">Temperatura</h5>
+            <div class="card-value text-primary"><span id="temp-value">0</span> °C</div>
+            <div class="alerta text-danger" id="alerta-temp"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card text-center border-info">
+          <div class="card-body">
+            <h5 class="card-title">Umidade</h5>
+            <div class="card-value text-info"><span id="umidade-value">0</span> %</div>
+            <div class="alerta text-warning" id="alerta-umidade"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center gap-2 my-3">
+      <button class="btn btn-outline-danger" id="aquecedor-btn"><i class="bi bi-fire"></i> Aquecedor</button>
+      <button class="btn btn-outline-primary" id="resfriador-btn"><i class="bi bi-snow"></i> Resfriador</button>
+      <button class="btn btn-outline-secondary" id="auto-btn"><i class="bi bi-arrow-repeat"></i> Automático</button>
+      <button class="btn btn-outline-success" id="alvo-btn"><i class="bi bi-bullseye"></i> Modo Alvo</button>
+    </div>
+
+    <!-- Controles do Modo Alvo -->
+    <div id="alvo-controles" class="mt-4" style="display: none;">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="alvo-min" class="form-label">Temperatura Alvo Mínima</label>
+          <input type="number" id="alvo-min" class="form-control" value="22" step="0.1">
+        </div>
+        <div class="col-md-6">
+          <label for="alvo-max" class="form-label">Temperatura Alvo Máxima</label>
+          <input type="number" id="alvo-max" class="form-control" value="26" step="0.1">
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <button class="btn btn-success" id="confirmar-alvo">✅ Confirmar Alvo</button>
+      </div>
+    </div>
+
+    <div class="text-center my-3">
+      <span class="badge bg-dark">Modo Atual: <span id="modo-atual">Automático</span></span>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-body">
+        <canvas id="grafico" height="120"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Administrador IoT</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card-summary {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }
+    .status-on { background-color: green; }
+    .status-off { background-color: red; }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <h2 class="mb-4 text-center">📡 Painel de Monitoramento - Administrador</h2>
+
+    <!-- Cards de resumo -->
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <div class="card border-primary text-center">
+          <div class="card-body">
+            <h5 class="card-title">📶 Dispositivos Conectados</h5>
+            <div class="card-summary text-primary" id="total-conectados">0</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-warning text-center">
+          <div class="card-body">
+            <h5 class="card-title">💧 Alertas de Umidade</h5>
+            <div class="card-summary text-warning" id="total-alertas">0</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-success text-center">
+          <div class="card-body">
+            <h5 class="card-title">⚙️ Modo Manual</h5>
+            <div class="card-summary text-success" id="total-modo-manual">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabela de dispositivos -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title mb-3">📋 Dispositivos Conectados</h5>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>ID Cliente</th>
+                <th>Estação</th>
+                <th>🌡️ Temperatura</th>
+                <th>💧 Umidade</th>
+                <th>🔥 Aquecedor</th>
+                <th>❄️ Resfriador</th>
+                <th>🛠️ Modo</th>
+                <th>Status</th>
+                <th>Conexão</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-dispositivos">
+              <!-- Conteúdo dinâmico via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
